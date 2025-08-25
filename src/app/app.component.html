@@ -1,16 +1,25 @@
-<router-outlet />
-<div class="flex join my-3">
-  <button class="btn btn-info join-item"
-    (click)="loadLabels()">Day</button>
-  <button class="btn btn-info join-item"
-    (click)="loadData1()">Week</button>
-  <button class="btn btn-info join-item"
-    (click)="loadData2()">Year</button>
-</div>
 
-@if(data() && labels()) {
-  <app-chartjs
-    [data]="data()"
-    [labels]="labels()"
-  />
-}
+<div class="mx-34 my-12">
+  <div class="flex join my-3">
+    <button class="btn btn-info join-item"
+            (click)="loadData1()">Week</button>
+    <button class="btn btn-info join-item"
+            (click)="loadData2()">Year</button>
+  </div>
+  <div class="flex gap-2 my-3 flex-wrap">
+    <button class="btn" (click)="changeType('pie')">Pie</button>
+    <button class="btn" (click)="changeType('bar')">Bar</button>
+    <button class="btn" (click)="changeType('line')">line</button>
+    <button class="btn" (click)="changeType('doughnut')">doughnut</button>
+    <button class="btn" (click)="changeType('radar')">radar</button>
+    <button class="btn" (click)="changeType('polarArea')">polarArea</button>
+  </div>
+  
+  @if(data() && labels()) {
+    <app-chartjs
+      [data]="data()"
+      [labels]="labels()"
+      [type]="type()"
+    />
+  }
+</div>
