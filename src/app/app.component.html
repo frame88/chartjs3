@@ -1,2 +1,16 @@
 <router-outlet />
-<app-chartjs></app-chartjs>
+<div class="flex join my-3">
+  <button class="btn btn-info join-item"
+    (click)="loadLabels()">Day</button>
+  <button class="btn btn-info join-item"
+    (click)="loadData1()">Week</button>
+  <button class="btn btn-info join-item"
+    (click)="loadData2()">Year</button>
+</div>
+
+@if(data() && labels()) {
+  <app-chartjs
+    [data]="data()"
+    [labels]="labels()"
+  />
+}
