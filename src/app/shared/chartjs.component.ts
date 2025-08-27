@@ -45,6 +45,16 @@ export class ChartjsComponent implements OnInit {
 
   chart: Chart | null = null;
 
+tickers: string[] = [
+  'AAPL', 'MSFT', 'AMZN', 'GOOGL', 'GOOG',
+  'META', 'NVDA', 'TSLA', 'AMD', 'INTC',
+  'NFLX', 'ORCL', 'ADBE', 'CRM', 'SHOP',
+  'TSM',  'BABA', 'IBM',  'SAP',  'SQ',
+  'PYPL', 'V',    'MA',   'JPM',  'BAC',
+  'WFC',  'C',    'NKE',  'DIS',  'KO'
+];
+
+
   constructor() {
     effect(() => {
       if (this.chart) {
@@ -64,7 +74,7 @@ export class ChartjsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.api.getLatestEod(['AAPL', 'MSFT', 'LDO.MI']).subscribe({
+    this.api.getLatestEod(this.tickers).subscribe({
       next: res => this.rows.set(res.data ?? []),
       error: err => this.error.set(err?.message ?? String(err)),
       complete: () => this.loading.set(false),
