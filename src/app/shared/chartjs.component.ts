@@ -64,7 +64,7 @@ export class ChartjsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.api.getLatestEod(['AAPL', 'MSFT']).subscribe({
+    this.api.getLatestEod(['AAPL', 'MSFT', 'LDO.MI']).subscribe({
       next: res => this.rows.set(res.data ?? []),
       error: err => this.error.set(err?.message ?? String(err)),
       complete: () => this.loading.set(false),

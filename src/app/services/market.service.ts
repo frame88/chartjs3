@@ -26,7 +26,7 @@ export class MarketService {
     const params = new HttpParams()
       .set('access_key', environment.marketstackKey)
       .set('symbols', symbols.join(','));
-    return this.http.get<EodResponse>(`${this.base}/eod/latest`, { params });
+    return this.http.get<EodResponse>(`${this.base}/eod/latest`, { params }); //Obtain the latest available end-of-day data for one or multiple stock tickers.
   }
 
   getEodRange(symbol: string, from: string, to: string, limit = 100) {
